@@ -1,12 +1,10 @@
-/* Last Smoked Card - Professional Design */
+/* Last Smoked Card - Compact Design */
 .last-smoked-card {
     background: linear-gradient(135deg, #10b981 0%, #059669 100%);
     border-radius: var(--radius-xl);
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
+    padding: 20px 16px;
     box-shadow: var(--shadow-md), 0 4px 16px rgba(16, 185, 129, 0.25);
+    text-align: center;
     color: white;
     position: relative;
     overflow: hidden;
@@ -18,62 +16,50 @@
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, transparent 100%);
-    pointer-events: none;
-}
-
-.last-smoked-icon {
-    width: 52px;
-    height: 52px;
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(10px);
-    border-radius: var(--radius-lg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.75rem;
-    flex-shrink: 0;
-    z-index: 1;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.last-smoked-content {
-    flex: 1;
-    z-index: 1;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.4);
 }
 
 .last-smoked-label {
-    margin: 0 0 4px 0;
-    font-size: 0.875rem;
+    margin: 0 0 16px 0;
+    font-size: 0.75rem;
     font-weight: 600;
-    opacity: 0.95;
+    color: rgba(255, 255, 255, 0.95);
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
+.last-smoked-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.last-smoked-icon {
+    font-size: 2rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
 .last-smoked-time {
-    margin: 0;
-    font-size: 1.5rem;
-    font-weight: 800;
+    font-size: 1.125rem;
+    font-weight: 700;
     line-height: 1.2;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    color: white;
 }
 
 /* Responsive adjustments */
 @media (max-width: 360px) {
     .last-smoked-card {
-        padding: 16px;
-        gap: 14px;
+        padding: 18px 14px;
     }
 
     .last-smoked-icon {
-        width: 48px;
-        height: 48px;
-        font-size: 1.5rem;
+        font-size: 1.75rem;
     }
 
     .last-smoked-time {
-        font-size: 1.375rem;
+        font-size: 1rem;
     }
 }

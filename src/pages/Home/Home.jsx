@@ -20,10 +20,10 @@ const Home = ({ userData, getUserDisplayName, getUserProfilePhoto, onLogSmoking,
 
             <div className="home-stats-grid">
                 <div className="today-count-card">
-                    <h2>Today&apos;s Count</h2>
+                    <h2 className="count-card-label">Today&apos;s Count</h2>
                     <div className="count-display">
+                        <span className="count-icon">🚬</span>
                         <span className="count-number">{todayCount}</span>
-                        <span className="count-label">cigarettes smoked</span>
                     </div>
                 </div>
 

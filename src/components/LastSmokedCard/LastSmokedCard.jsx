@@ -38,10 +38,10 @@ const LastSmokedCard = ({ smokingLogs }) => {
 
     return (
         <div className="last-smoked-card">
-            <div className="last-smoked-icon">🕐</div>
-            <div className="last-smoked-content">
-                <h3 className="last-smoked-label">Last Smoked</h3>
-                <p className="last-smoked-time">{timeAgo}</p>
+            <h2 className="last-smoked-label">Last Smoked</h2>
+            <div className="last-smoked-display">
+                <span className="last-smoked-icon">⏱️</span>
+                <span className="last-smoked-time">{timeAgo}</span>
             </div>
         </div>
     )

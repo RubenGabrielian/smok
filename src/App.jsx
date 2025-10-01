@@ -21,6 +21,12 @@ function App() {
     // Expand the app to full height
     WebApp.expand()
 
+    // Enable closing confirmation
+    WebApp.enableClosingConfirmation()
+
+    // Set header color to match the design
+    WebApp.setHeaderColor('#f8fafc')
+
     // Get user data
     const user = WebApp.initDataUnsafe?.user
     if (user) {
@@ -37,8 +43,8 @@ function App() {
     }
 
     // Apply theme colors to the app
-    document.body.style.backgroundColor = '#f5f7fa'
-    document.body.style.color = '#1a1a1a'
+    document.body.style.backgroundColor = '#f8fafc'
+    document.body.style.color = '#0f172a'
   }, [])
 
   const handleLogSmoking = () => {

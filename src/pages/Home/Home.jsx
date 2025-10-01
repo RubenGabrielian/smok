@@ -1,6 +1,8 @@
 import ProfileCard from '../../components/ProfileCard/ProfileCard'
 import MotivationCard from '../../components/MotivationCard/MotivationCard'
 import LogButton from '../../components/LogButton/LogButton'
+import AnalyticsDashboard from '../../components/AnalyticsDashboard/AnalyticsDashboard'
+import WeeklyChart from '../../components/WeeklyChart/WeeklyChart'
 import { getTodayCount } from '../../utils/smokingHelpers'
 import './Home.css'
 
@@ -25,6 +27,8 @@ const Home = ({ userData, getUserDisplayName, getUserProfilePhoto, onLogSmoking,
 
             <MotivationCard />
             <LogButton onLog={onLogSmoking} />
+            <AnalyticsDashboard smokingLogs={smokingLogs} />
+            <WeeklyChart smokingLogs={smokingLogs} />
         </>
     )
 }

@@ -4,10 +4,17 @@ const LogButton = ({ onLog }) => {
     return (
         <div className="log-section">
             <button onClick={onLog} className="log-button">
-                <span className="log-button-icon">🚬</span>
-                <span className="log-button-text">Log Smoking</span>
+                <div className="log-button-inner">
+                    <div className="log-button-icon-wrapper">
+                        <span className="log-button-icon">🚬</span>
+                    </div>
+                    <div className="log-button-content">
+                        <span className="log-button-title">Log Cigarette</span>
+                        <span className="log-button-subtitle">Tap to record</span>
+                    </div>
+                </div>
+                <div className="log-button-arrow">→</div>
             </button>
-            <p className="log-hint">Tap here when you smoke to track your progress</p>
         </div>
     )
 }

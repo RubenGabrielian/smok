@@ -7,11 +7,13 @@ import Profile from './pages/Profile/Profile'
 import BottomNav from './components/BottomNav/BottomNav'
 import { getUserDisplayName, getUserProfilePhoto } from './utils/userHelpers'
 import { loadSmokingLogs, saveSmokingLog, createSmokingLog, sendLogToBot } from './utils/smokingHelpers'
+import { loadCigarettePrice, saveCigarettePrice } from './utils/priceHelpers'
 import './App.css'
 
 function App() {
   const [userData, setUserData] = useState(null)
   const [smokingLogs, setSmokingLogs] = useState([])
+  const [cigarettePrice, setCigarettePrice] = useState(0)
   const [activeTab, setActiveTab] = useState('home')
 
   useEffect(() => {
@@ -35,10 +37,17 @@ function App() {
       loadSmokingLogs(user.id).then(savedLogs => {
         setSmokingLogs(savedLogs)
       })
+      // Load cigarette price
+      loadCigarettePrice(user.id).then(price => {
+        setCigarettePrice(price)
+      })
     } else {
       // Load without user ID if not available
       loadSmokingLogs(null).then(savedLogs => {
         setSmokingLogs(savedLogs)
+      })
+      loadCigarettePrice(null).then(price => {
+        setCigarettePrice(price)
       })
     }
 
@@ -60,9 +69,12 @@ function App() {
 
     // Send data to bot
     sendLogToBot(newLog, updatedLogs.length)
+  }
 
-    // Show confirmation
-    WebApp.showAlert('Smoking logged! Remember, you\'re stronger than this habit. 💪')
+  const handlePriceUpdate = async (price) => {
+    setCigarettePrice(price)
+    const userId = userData?.id
+    await saveCigarettePrice(price, userId)
   }
 
   const renderContent = () => {
@@ -79,7 +91,7 @@ function App() {
         )
 
       case 'stats':
-        return <Stats smokingLogs={smokingLogs} />
+        return <Stats smokingLogs={smokingLogs} cigarettePrice={cigarettePrice} />
 
       case 'history':
         return <History smokingLogs={smokingLogs} />
@@ -90,6 +102,8 @@ function App() {
             userData={userData}
             getUserDisplayName={() => getUserDisplayName(userData)}
             getUserProfilePhoto={() => getUserProfilePhoto(userData)}
+            cigarettePrice={cigarettePrice}
+            onPriceUpdate={handlePriceUpdate}
           />
         )
 

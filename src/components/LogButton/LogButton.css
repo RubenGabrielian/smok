@@ -1,59 +1,150 @@
-/* Log Section - Professional Design */
+/* Log Section - Premium Redesign */
 .log-section {
-    text-align: center;
     padding: 8px 0;
 }
 
 .log-button {
     width: 100%;
-    padding: 18px 32px;
+    padding: 0;
     border: none;
-    border-radius: var(--radius-full);
-    background: linear-gradient(135deg, var(--color-danger) 0%, #dc2626 100%);
+    border-radius: var(--radius-xl);
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
     color: white;
-    font-size: 1rem;
-    font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: var(--shadow-lg), 0 0 0 0 rgba(239, 68, 68, 0.5);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-lg), 0 4px 20px rgba(239, 68, 68, 0.3);
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin: 0 auto;
+    justify-content: space-between;
     position: relative;
     overflow: hidden;
+    min-height: 80px;
 }
 
+/* Animated gradient overlay */
 .log-button::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
-    pointer-events: none;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+
+    50%,
+    100% {
+        left: 100%;
+    }
 }
 
 .log-button:active {
-    transform: scale(0.97);
-    box-shadow: var(--shadow-md), 0 0 0 4px rgba(239, 68, 68, 0.2);
+    transform: scale(0.98);
+    box-shadow: var(--shadow-md), 0 2px 12px rgba(239, 68, 68, 0.4);
+}
+
+.log-button-inner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    flex: 1;
+}
+
+.log-button-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .log-button-icon {
-    font-size: 1.375rem;
-    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+    font-size: 1.5rem;
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3));
+    animation: iconPulse 2s ease-in-out infinite;
 }
 
-.log-button-text {
-    font-size: 1rem;
-    letter-spacing: 0.5px;
+@keyframes iconPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
 }
 
-.log-hint {
-    margin: 10px 0 0 0;
-    font-size: 0.75rem;
-    color: var(--color-text-secondary);
+.log-button-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    flex: 1;
+}
+
+.log-button-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    line-height: 1.2;
+}
+
+.log-button-subtitle {
+    font-size: 0.8125rem;
+    opacity: 0.9;
     font-weight: 500;
+}
+
+.log-button-arrow {
+    font-size: 1.5rem;
+    padding-right: 24px;
+    opacity: 0.9;
+    transition: transform 0.3s ease;
+}
+
+.log-button:active .log-button-arrow {
+    transform: translateX(4px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 360px) {
+    .log-button {
+        min-height: 72px;
+    }
+
+    .log-button-inner {
+        padding: 16px 20px;
+        gap: 14px;
+    }
+
+    .log-button-icon-wrapper {
+        width: 44px;
+        height: 44px;
+    }
+
+    .log-button-title {
+        font-size: 1rem;
+    }
+
+    .log-button-subtitle {
+        font-size: 0.75rem;
+    }
+
+    .log-button-arrow {
+        padding-right: 20px;
+    }
 }

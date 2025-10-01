@@ -65,11 +65,105 @@
     font-weight: 600;
 }
 
+/* Price Settings Card */
+.price-settings-card {
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-xl);
+    padding: 20px;
+    margin-top: 16px;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+}
+
+.price-settings-title {
+    margin: 0 0 4px 0;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+.price-settings-subtitle {
+    margin: 0 0 20px 0;
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+}
+
+.price-input-group {
+    display: flex;
+    gap: 10px;
+    align-items: stretch;
+}
+
+.price-input-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--color-bg-primary);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 14px 16px;
+    transition: border-color 0.2s ease;
+}
+
+.price-input-wrapper:focus-within {
+    border-color: var(--color-primary);
+}
+
+.price-input-symbol {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+}
+
+.price-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    outline: none;
+    width: 100%;
+}
+
+.price-input::placeholder {
+    color: var(--color-text-secondary);
+    opacity: 0.4;
+}
+
+.price-save-button {
+    padding: 0 20px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: white;
+    border: none;
+    border-radius: var(--radius-lg);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-sm);
+    white-space: nowrap;
+}
+
+.price-save-button:active {
+    transform: scale(0.97);
+    box-shadow: var(--shadow-md);
+}
+
+.price-helper-text {
+    margin: 10px 0 0 0;
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    text-align: center;
+}
+
 /* App Info Card */
 .app-info-card {
     background: white;
     border-radius: 20px;
     padding: 24px;
+    margin-top: 16px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 

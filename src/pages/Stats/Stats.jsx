@@ -1,7 +1,8 @@
 import PageHeader from '../../components/PageHeader/PageHeader'
+import { calculateMoneyLost } from '../../utils/priceHelpers'
 import './Stats.css'
 
-const Stats = ({ smokingLogs }) => {
+const Stats = ({ smokingLogs, cigarettePrice }) => {
     const calculateDaysTracking = () => {
         if (smokingLogs.length === 0) return 0
         const firstLog = new Date(smokingLogs[smokingLogs.length - 1].timestamp)
@@ -27,12 +28,25 @@ const Stats = ({ smokingLogs }) => {
         return new Date(smokingLogs[0].timestamp).toLocaleDateString()
     }
 
+    const moneyLost = calculateMoneyLost(smokingLogs, cigarettePrice)
+
     return (
         <>
             <PageHeader
                 title="📊 Statistics"
                 subtitle="Track your smoking patterns"
             />
+
+            {cigarettePrice > 0 && (
+                <div className="money-lost-card">
+                    <div className="money-lost-icon">💸</div>
+                    <div className="money-lost-content">
+                        <h3 className="money-lost-title">Total Money Lost</h3>
+                        <div className="money-lost-amount">${moneyLost}</div>
+                        <p className="money-lost-subtitle">Based on your package price</p>
+                    </div>
+                </div>
+            )}
 
             <div className="stats-card">
                 <h3 className="stats-title">Your Progress</h3>

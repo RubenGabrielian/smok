@@ -1,7 +1,32 @@
+import { useState, useEffect } from 'react'
+import WebApp from '@twa-dev/sdk'
 import PageHeader from '../../components/PageHeader/PageHeader'
 import './Profile.css'
 
-const Profile = ({ userData, getUserDisplayName, getUserProfilePhoto }) => {
+const Profile = ({ userData, getUserDisplayName, getUserProfilePhoto, cigarettePrice, onPriceUpdate }) => {
+    const [priceInput, setPriceInput] = useState(cigarettePrice || '')
+
+    // Update input when cigarettePrice changes (loaded from storage)
+    useEffect(() => {
+        if (cigarettePrice > 0) {
+            setPriceInput(cigarettePrice)
+        }
+    }, [cigarettePrice])
+
+    const handlePriceChange = (e) => {
+        const value = e.target.value
+        // Allow only numbers and one decimal point
+        if (value === '' || /^\d*\.?\d*$/.test(value)) {
+            setPriceInput(value)
+        }
+    }
+
+    const handlePriceSave = () => {
+        const price = parseFloat(priceInput) || 0
+        onPriceUpdate(price)
+        WebApp.HapticFeedback.notificationOccurred('success')
+    }
+
     return (
         <>
             <PageHeader
@@ -37,6 +62,29 @@ const Profile = ({ userData, getUserDisplayName, getUserProfilePhoto }) => {
                     </div>
                 </div>
             )}
+
+            <div className="price-settings-card">
+                <h4 className="price-settings-title">💰 Package Price</h4>
+                <p className="price-settings-subtitle">Track your spending</p>
+
+                <div className="price-input-group">
+                    <div className="price-input-wrapper">
+                        <span className="price-input-symbol">$</span>
+                        <input
+                            type="text"
+                            inputMode="decimal"
+                            className="price-input"
+                            placeholder="0.00"
+                            value={priceInput}
+                            onChange={handlePriceChange}
+                        />
+                    </div>
+                    <button onClick={handlePriceSave} className="price-save-button">
+                        Save
+                    </button>
+                </div>
+                <p className="price-helper-text">20 cigarettes per pack</p>
+            </div>
 
             <div className="app-info-card">
                 <h4 className="app-info-title">About This App</h4>

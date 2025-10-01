@@ -3,6 +3,7 @@ import MotivationCard from '../../components/MotivationCard/MotivationCard'
 import LogButton from '../../components/LogButton/LogButton'
 import AnalyticsDashboard from '../../components/AnalyticsDashboard/AnalyticsDashboard'
 import WeeklyChart from '../../components/WeeklyChart/WeeklyChart'
+import LastSmokedCard from '../../components/LastSmokedCard/LastSmokedCard'
 import { getTodayCount } from '../../utils/smokingHelpers'
 import './Home.css'
 
@@ -17,12 +18,16 @@ const Home = ({ userData, getUserDisplayName, getUserProfilePhoto, onLogSmoking,
                 getUserProfilePhoto={getUserProfilePhoto}
             />
 
-            <div className="today-count-card">
-                <h2>Today&apos;s Count</h2>
-                <div className="count-display">
-                    <span className="count-number">{todayCount}</span>
-                    <span className="count-label">cigarettes smoked</span>
+            <div className="home-stats-grid">
+                <div className="today-count-card">
+                    <h2>Today&apos;s Count</h2>
+                    <div className="count-display">
+                        <span className="count-number">{todayCount}</span>
+                        <span className="count-label">cigarettes smoked</span>
+                    </div>
                 </div>
+
+                <LastSmokedCard smokingLogs={smokingLogs} />
             </div>
 
             <MotivationCard />

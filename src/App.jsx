@@ -25,15 +25,20 @@ function App() {
     const user = WebApp.initDataUnsafe?.user
     if (user) {
       setUserData(user)
+      // Load smoking logs from Telegram CloudStorage for this user
+      loadSmokingLogs(user.id).then(savedLogs => {
+        setSmokingLogs(savedLogs)
+      })
+    } else {
+      // Load without user ID if not available
+      loadSmokingLogs(null).then(savedLogs => {
+        setSmokingLogs(savedLogs)
+      })
     }
 
     // Apply theme colors to the app
     document.body.style.backgroundColor = '#f5f7fa'
     document.body.style.color = '#1a1a1a'
-
-    // Load smoking logs from localStorage
-    const savedLogs = loadSmokingLogs()
-    setSmokingLogs(savedLogs)
   }, [])
 
   const handleLogSmoking = () => {
@@ -43,8 +48,9 @@ function App() {
     const updatedLogs = [newLog, ...smokingLogs]
     setSmokingLogs(updatedLogs)
 
-    // Save to localStorage
-    saveSmokingLog(updatedLogs)
+    // Save to Telegram CloudStorage with user ID
+    const userId = userData?.id
+    saveSmokingLog(updatedLogs, userId)
 
     // Send data to bot
     sendLogToBot(newLog, updatedLogs.length)
@@ -62,6 +68,7 @@ function App() {
             getUserDisplayName={() => getUserDisplayName(userData)}
             getUserProfilePhoto={() => getUserProfilePhoto(userData)}
             onLogSmoking={handleLogSmoking}
+            smokingLogs={smokingLogs}
           />
         )
 

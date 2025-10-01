@@ -1,0 +1,67 @@
+/* Logs Card */
+.logs-card {
+    background: white;
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.logs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.log-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    background: #f9fafb;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+.log-item:hover {
+    background: #f3f4f6;
+    transform: translateX(4px);
+}
+
+.log-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.log-date {
+    font-size: 0.9rem;
+    color: #1a1a1a;
+    font-weight: 500;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.empty-icon {
+    font-size: 4rem;
+    margin-bottom: 16px;
+    opacity: 0.5;
+}
+
+.empty-state h3 {
+    font-size: 1.3rem;
+    margin: 0 0 8px 0;
+    color: #1a1a1a;
+    font-weight: 700;
+}
+
+.empty-state p {
+    font-size: 0.95rem;
+    color: #9ca3af;
+    margin: 0;
+}

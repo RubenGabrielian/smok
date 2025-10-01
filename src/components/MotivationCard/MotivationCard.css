@@ -1,0 +1,37 @@
+/* Motivation Card */
+.motivation-card {
+    background: white;
+    border-radius: 20px;
+    padding: 24px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.motivation-icon {
+    font-size: 3rem;
+    margin-bottom: 12px;
+}
+
+.motivation-title {
+    font-size: 1.4rem;
+    margin: 0 0 12px 0;
+    color: #1a1a1a;
+    font-weight: 700;
+}
+
+.motivation-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #6b7280;
+    margin: 0;
+}
+
+@media (max-width: 480px) {
+    .motivation-card {
+        padding: 20px;
+    }
+
+    .motivation-title {
+        font-size: 1.2rem;
+    }
+}

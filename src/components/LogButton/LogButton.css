@@ -1,0 +1,56 @@
+/* Log Section */
+.log-section {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.log-button {
+    width: 100%;
+    max-width: 300px;
+    padding: 20px 40px;
+    border: none;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 0 auto;
+}
+
+.log-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 107, 107, 0.4);
+}
+
+.log-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
+}
+
+.log-button-icon {
+    font-size: 1.5rem;
+}
+
+.log-button-text {
+    font-size: 1.1rem;
+}
+
+.log-hint {
+    margin: 12px 0 0 0;
+    font-size: 0.85rem;
+    color: #9ca3af;
+}
+
+@media (max-width: 480px) {
+    .log-button {
+        padding: 18px 32px;
+        font-size: 1rem;
+    }
+}
